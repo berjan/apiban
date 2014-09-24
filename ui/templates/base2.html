@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8"/>
+    <title>Apiban - Unique and Professional Corporate Theme</title>
+    <link media="screen" charset="utf-8" rel="stylesheet" href="{{ STATIC_URL }}css/search.css"/>
+
+</head>
+<body>
+
+<section id="content-root">
+    <header id="content-root-header" role="global" class="ng-scope">
+        <div ng-controller="NotificationCtrl" class="ng-scope">
+            <!-- ngRepeat: n in notifications -->
+        </div>
+        <div id="header-container">
+            <nav id="global-nav">
+                <a href="#" class="left-off-canvas-toggle mobile">
+                    <figure class="general-icon-menu"></figure>
+                </a>
+{#                <ul class="desktop">#}
+{#                    <li><a href="http://www.istockphoto.com/stock-photos" data-isource-track="nav_Photos">#}
+{#                        Photos </a></li>#}
+{#                    <li><a href="http://www.istockphoto.com/stock-illustrations" data-isource-track="nav_Illustrations">#}
+{#                        Illustrations </a></li>#}
+{#                    <li><a href="http://www.istockphoto.com/footage" data-isource-track="nav_Video">#}
+{#                        Video </a></li>#}
+{#                    <li><a href="http://www.istockphoto.com/music-clips" data-isource-track="nav_Audio">#}
+{#                        Audio </a></li>#}
+{#                </ul>#}
+            </nav>
+
+            <section id="logo">
+                <a href="http://www.istockphoto.com/" data-isource-track="nav=head_Logo">iStock by Getty Images</a>
+            </section>
+
+            <section id="account">
+                            <span>
+                                <ul>
+                                    <li class="mobile-ib">
+                                        <a href="#" class="right-off-canvas-toggle">
+                                            <figure class="general-icon-account mobile-ib"></figure>
+                                        </a>
+                                    </li>
+                                    <li class="desktop">
+                                        <a href="/">
+                                            APIBAN </a>
+                                    </li>
+                                    <li class="divider desktop"></li>
+                                    <li class="desktop">
+                                        <a href="mailto:apiban@bruens.it">
+                                            Vraag API aan </a>
+                                    </li>
+                                </ul>
+                            </span>
+            </section>
+        </div>
+
+
+        <aside class="right-off-canvas-menu ng-scope" ng-controller="AcctCtrl">
+            <a href="#" class="exit-off-canvas inner desktop">
+                <figure class="general-icon-slider-close"></figure>
+            </a>
+
+            <ul class="off-canvas-list sign-in">
+                <li><a href="http://www.istockphoto.com/sign-in/aHR0cCUzQSUyRiUyRnd3dy5pc3RvY2twaG90by5jb20lMkY="
+                       data-isource-track="nav=nav_SignIn">
+                    Sign in </a></li>
+                <li><a href="http://www.istockphoto.com/join/aHR0cCUzQSUyRiUyRnd3dy5pc3RvY2twaG90by5jb20lMkY="
+                       data-isource-track="nav_Join">
+                    Join </a></li>
+            </ul>
+        </aside>
+
+        <!-- Mobile Menu -->
+        <aside class="left-off-canvas-menu">
+            <a href="#" class="exit-off-canvas inner desktop">
+                <figure class="general-icon-slider-close"></figure>
+            </a>
+
+            <ul class="off-canvas-list mobile">
+                <li><a href="http://www.istockphoto.com/stock-photos" data-isource-track="nav_Photos">
+                    Photos </a></li>
+                <li><a href="http://www.istockphoto.com/stock-illustrations" data-isource-track="nav_Illustrations">
+                    Illustrations </a></li>
+                <li><a href="http://www.istockphoto.com/footage" data-isource-track="nav_Video">
+                    Video </a></li>
+                <li><a href="http://www.istockphoto.com/music-clips" data-isource-track="nav_Audio">
+                    Audio </a></li>
+            </ul>
+        </aside>
+    </header>
+    <section class="hero small-break ng-scope" ng-app="homepage" style="height: 700px;">
+        <search-bar ng-controller="HomePageCtrl" peeking="" peeking-offset="810"
+                    place-holder="Vul uw rekeningnummer in en vind uw IBAN nummer"
+                   class="ng-scope ng-isolate-scope">
+            <div class="search-container"
+                 style="max-width: 900px; padding-right: 5px; position: relative; top: 254.5px; padding-left: 0px;">
+                <headroom enabled="peeking" offset="peekingOffset" class="ng-isolate-scope searchbar searchbar-top">
+                    <div class="search-bar">
+                        <div class="search-icon-container">
+                            <div class="search-icon"></div>
+                        </div>
+                        <div class="search-input">
+                            <form id="searchIban" method="post" action="{% url 'homepage' %}" class="ng-pristine ng-valid">
+                                {% csrf_token %}
+                                <input id="search-bar-input" type="search" autocomplete="off" autocorrect="off"
+                                       spellcheck="false" class=""
+                                       placeholder="Vul uw rekeningnummer in en vind uw IBAN nummer" name="search">
+{#                                {{ form.as_p }}#}
+
+{#                                <input id="btnSearch" type="submit" value="Search"/>#}
+                            </form>
+                        </div>
+                        <div class="search-clear ng-hide" ng-hide="query==''">
+{#                            <a ng-click="query=''">#}
+{#                                <div class="search-clear-icon"></div>#}
+{#                            </a>#}
+                        </div>
+                    </div>
+
+                    <section class="hints-container ng-hide" ng-show="hasHints()" ng-animate="'animate'">
+                        <div class="hints">
+                            <ul class="hints-list">
+                                <!-- ngRepeat: hint in hints | filter:query | limitTo:hintLimit -->
+                                <li>                            <h2>{{ iban }}</h2>
+</li>
+                            </ul>
+                            <ul class="member-list">
+                                <!-- ngRepeat: member in members | filter:query | limitTo:memberLimit -->
+                            </ul>
+                        </div>
+                    </section>
+                </headroom>
+                <!-- ngIf: peeking -->
+                <div class="search-bar-placeholder ng-scope" ng-if="peeking"></div>
+                <!-- end ngIf: peeking -->
+            </div>
+        </search-bar>
+        <h4 class="sell-banner header">
+{#            <div class="hero-details"><a href="http://www.istockphoto.com/photo/spinning-in-the-stars-40476012">40476012,#}
+{#                shaunl</a></div>#}
+        <span>
+        <!-- CW:OK -->
+<!--ls:begin[component-1404859282586]-->Vertaling van rekeningnummer naar IBAN. <a href="mailto:apiban@bruens.it">API beschikbaar</a>.
+<div id="_mcePaste" class="mcePaste"
+     style="position: absolute; left: -40px; top: -25px; width: 1px; height: 1px; overflow: hidden;"></div><!--ls:end[component-1404859282586]-->
+<!-- CW:END -->        </span>
+        </h4>
+
+    </section>
+</section>
+</body>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#btnSearch').click(function(e){
+        e.preventDefault();
+        document.forms["searchIban"].submit();
+{#        $('#SearchIban').submit();#}
+    })
+</script>
+</html>
